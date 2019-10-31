@@ -1,0 +1,22 @@
+sudo: required
+
+language: minimal
+
+git:
+    depth: false
+    quiet: true
+    submodules: false
+
+services:
+    - docker
+
+before_install:
+    - docker-compose -f infrastructure/docker/docker-compose.yml up -d
+
+install:
+    - docker-compose -f infrastructure/docker/docker-compose.yml exec php-cli-7.2 /bin/bash -c "composer install --no-interaction"
+    - docker-compose -f infrastructure/docker/docker-compose.yml exec php-cli-7.3 /bin/bash -c "composer install --no-interaction"
+
+script:
+    - docker-compose -f infrastructure/docker/docker-compose.yml exec -T php-cli-7.2 /bin/bash -c "bin/phing all"
+    - docker-compose -f infrastructure/docker/docker-compose.yml exec -T php-cli-7.3 /bin/bash -c "bin/phing all"

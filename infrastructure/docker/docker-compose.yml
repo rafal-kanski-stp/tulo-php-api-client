@@ -1,0 +1,23 @@
+version: '3'
+services:
+    php-cli-7.3:
+        environment:
+            - GITHUB_OAUTH_TOKEN=$GITHUB_OAUTH_TOKEN
+        container_name: tulo_api_client_php_cli_7.3
+        build:
+            args:
+                - CONTAINER_USER_ID=$CONTAINER_USER_ID
+                - CONTAINER_USER_NAME=$CONTAINER_USER_NAME
+                - CONTAINER_GROUP_ID=$CONTAINER_GROUP_ID
+                - CONTAINER_GROUP_NAME=$CONTAINER_GROUP_NAME
+            context: ../..
+            dockerfile: infrastructure/docker/php-cli/7.3/Dockerfile
+        volumes:
+            - ./../../:/var/www/tulo-api-client
+    php-cli-7.2:
+        environment:
+            - GITHUB_OAUTH_TOKEN=$GITHUB_OAUTH_TOKEN
+        container_name: tulo_api_client_php_cli_7.2
+        build:
+            context: ../..
+            dockerfile: infrastructure/docker/php-cli/7.2/Dockerfile

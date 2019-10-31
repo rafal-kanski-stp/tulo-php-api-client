@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="App" default="all">
+    <property name="package_src_directory" value="src"/>
+
+    <import file="phing/quality.xml"/>
+    <import file="phing/tests.xml"/>
+
+    <target name="all" depends="quality,tests" description="runs quality tools and tests"/>
+</project>

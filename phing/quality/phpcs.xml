@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="App Rules">
+    <description>App coding standard</description>
+    <file>../../src</file>
+    <rule ref="PSR1"/>
+    <rule ref="PSR12"/>
+</ruleset>

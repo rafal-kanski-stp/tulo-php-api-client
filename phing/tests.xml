@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="App" default="all">
+
+    <target name="phpspec" description="runs phpspec tests">
+        <exec executable="bin/phpspec" passthru="true" checkreturn="true">
+            <arg line="run
+                --format=pretty"/>
+        </exec>
+    </target>
+
+    <target name="tests" depends="phpspec" description="runs tests: phpspec"/>
+
+</project>

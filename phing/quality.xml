@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="App" default="all">
+    <target name="phpcs" description="runs phpcs">
+        <exec executable="bin/phpcs" passthru="true" checkreturn="true">
+            <arg line="--report=emacs --standard=phing/quality/phpcs.xml --extensions=php"/>
+        </exec>
+    </target>
+    <target name="phpmd" description="runs phpmd">
+        <exec executable="bin/phpmd" passthru="true" checkreturn="true">
+            <arg line="${package_src_directory} text phing/quality/phpmd.xml --suffixes php"/>
+        </exec>
+    </target>
+    <target name="phpcpd" description="runs phpcpd">
+        <exec executable="bin/phpcpd" passthru="true" checkreturn="true">
+            <arg line="--min-tokens=40 ${package_src_directory}"/>
+        </exec>
+    </target>
+    <target name="quality" depends="phpcs,phpmd,phpcpd" description="runs code quality tools: phpmd, phpcs and phpcpd"/>
+</project>
