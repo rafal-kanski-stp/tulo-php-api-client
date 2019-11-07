@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tulo\Api\Client\AccessToken\Exception;
+namespace Tulo\Api\Client\OAuth\Rest\Exception;
 
 use Exception;
 use RuntimeException;
 
-final class CouldNotProvideAccessTokenException extends RuntimeException
+final class ApiException extends RuntimeException
 {
     public static function createFromPrevious(Exception $exception): self
     {

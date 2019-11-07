@@ -6,15 +6,22 @@ namespace Tulo\Api\Client\Configuration\Authorization;
 
 final class AccessToken
 {
-    private $accessToken;
+    private $token;
+    private $refreshToken;
 
-    public function __construct(string $accessToken)
+    public function __construct(string $token, ?string $refreshToken)
     {
-        $this->accessToken = $accessToken;
+        $this->token = $token;
+        $this->refreshToken = $refreshToken;
     }
 
-    public function get(): string
+    public function getToken(): string
     {
-        return $this->accessToken;
+        return $this->token;
+    }
+
+    public function getRefreshToken(): ?string
+    {
+        return $this->refreshToken;
     }
 }

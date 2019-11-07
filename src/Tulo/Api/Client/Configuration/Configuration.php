@@ -4,28 +4,18 @@ declare(strict_types=1);
 
 namespace Tulo\Api\Client\Configuration;
 
-use Tulo\Api\Client\Configuration\Authorization\AccessTokenUrl;
-use Tulo\Api\Client\Configuration\Authorization\AuthorizeUrl;
 use Tulo\Api\Client\Configuration\Authorization\ClientCredentials;
-use Tulo\Api\Client\Configuration\Authorization\RedirectUrl;
+use Tulo\Api\Client\Configuration\Authorization\Urls;
 
 final class Configuration
 {
     private $clientCredentials;
-    private $redirectUrl;
-    private $authorizeUrl;
-    private $accessTokenUrl;
+    private $urls;
 
-    public function __construct(
-        ClientCredentials $clientCredentials,
-        RedirectUrl $redirectUrl,
-        AuthorizeUrl $authorizeUrl,
-        AccessTokenUrl $accessTokenUrl
-    ) {
+    public function __construct(ClientCredentials $clientCredentials, Urls $urls)
+    {
         $this->clientCredentials = $clientCredentials;
-        $this->redirectUrl = $redirectUrl;
-        $this->authorizeUrl = $authorizeUrl;
-        $this->accessTokenUrl = $accessTokenUrl;
+        $this->urls = $urls;
     }
 
     public function getClientCredentials(): ClientCredentials
@@ -33,18 +23,8 @@ final class Configuration
         return $this->clientCredentials;
     }
 
-    public function getRedirectUrl(): RedirectUrl
+    public function getUrls(): Urls
     {
-        return $this->redirectUrl;
-    }
-
-    public function getAuthorizeUrl(): AuthorizeUrl
-    {
-        return $this->authorizeUrl;
-    }
-
-    public function getAccessTokenUrl(): AccessTokenUrl
-    {
-        return $this->accessTokenUrl;
+        return $this->urls;
     }
 }
